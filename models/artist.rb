@@ -16,7 +16,7 @@ class Artist
     ) VALUES (
     '#{@name}'
     )
-    RETURNING *;"
+    RETURNING *"
     result = SqlRunner.run(sql)
     @id = result.first()["id"].to_i
   end
@@ -37,12 +37,14 @@ class Artist
 
   def albums()
     sql = "SELECT * FROM albums WHERE artist_id = #{@id}"
-    SqlRunner.run(sql)
+    result = SqlRunner.run(sql)
+    albums = result.map {|album| Album.new(album)}
   end
 
   def self.find(id)
     sql = "SELECT * FROM artists WHERE id = #{@id}"
-    SqlRunner.run(sql)
+    result = SqlRunner.run(sql)
+    artist = result.map {|artist| Artist.new(artist)}
   end
 
   def self.delete_all()

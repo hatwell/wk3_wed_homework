@@ -31,12 +31,12 @@ class Genre
   end
 
   def self.find_id(id)
-    sql = "SELECT * FROM artists WHERE id = #{@id}"
+    sql = "SELECT * FROM genres WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
   def self.delete_all()
-    sql = "DELETE FROM artists"
+    sql = "DELETE FROM genres"
     SqlRunner.run(sql)
   end
 
