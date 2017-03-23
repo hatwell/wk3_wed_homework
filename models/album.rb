@@ -45,8 +45,10 @@ class Album
   end
 
   def self.find(id)
-    sql = "SELECT * FROM albums WHERE id = #{@id}"
-    SqlRunner.run(sql)
+    sql = "SELECT * FROM albums WHERE id = #{id}"
+    result = SqlRunner.run(sql)
+    album = Album.new(result.first)
+    return album
   end
 
   def self.delete_all()

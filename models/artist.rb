@@ -42,7 +42,7 @@ class Artist
   end
 
   def self.find(id)
-    sql = "SELECT * FROM artists WHERE id = #{@id}"
+    sql = "SELECT * FROM artists WHERE id = #{id}"
     result = SqlRunner.run(sql)
     artist = result.map {|artist| Artist.new(artist)}
   end
